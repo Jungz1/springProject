@@ -14,7 +14,7 @@ public class Purchase {
     private String name;
     private String description;
     private String category;
-    private String imagePath;
+    private String image;
 
     public Purchase(){};
 }

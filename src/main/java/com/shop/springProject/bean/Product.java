@@ -12,7 +12,7 @@ public class Product {
     private String name;
     private String description;
     private String category;
-    private String imagePath;
+    private String image;
     private int price;
 
     public Product() {
@@ -50,12 +50,12 @@ public class Product {
         this.category = category;
     }
 
-    public String getImagePath() {
-        return this.imagePath;
+    public String getImage() {
+        return this.image;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getPrice() {
