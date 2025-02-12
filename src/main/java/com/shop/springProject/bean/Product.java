@@ -14,12 +14,7 @@ public class Product {
     private String category;
     private String imagePath;
     private int price;
-    @ManyToMany
-    @JoinTable(
-            name = "purchase",
-            joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name="user_id")
-    )
+
     public Product() {
     }
 
