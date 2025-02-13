@@ -160,7 +160,7 @@ catch(error){
                           <td>{product.category}</td>
                           <td>
                             <img
-                              src={`http://localhost:8089/products/image/${product.image}`}
+                              src={`http://localhost:8089/products/images/${product.image}`}
                               alt={product.name}
                               width="100"
                               height="100"
