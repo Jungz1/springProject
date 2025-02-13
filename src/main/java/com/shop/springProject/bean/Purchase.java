@@ -1,10 +1,10 @@
 package com.shop.springProject.bean;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Purchase {
@@ -15,6 +15,8 @@ public class Purchase {
     private Long id;
     private Long product_id;
     private String product_name;
+    @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private Long customer_id;
     private String customer_name;
 
