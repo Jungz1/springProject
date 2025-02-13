@@ -9,6 +9,7 @@ function App() {
   const[category,setCategory]=useState("");
   const[price,setPrice]=useState("");
   const[products,setProducts]=useState([]);
+  const [filterCategory, setFilterCategory] = useState("");
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -62,6 +63,14 @@ catch(error){
 
     }
   };
+
+  const handleFilterChange = (e) => {
+      setFilterCategory(e.target.value);
+    };
+
+    const filteredProducts = filterCategory
+      ? products.filter((product) => product.category === filterCategory)
+      : products;
   return (
     <div className="container">
     <h1 className="my-4">Sporty Shoes</h1>
@@ -113,7 +122,23 @@ catch(error){
             </button>
           </form>
     <h2> Product List</h2>
-
+    <div className="form-group mb-4">
+            <label>Filter by Category</label>
+            <select
+              className="form-control"
+              value={filterCategory}
+              onChange={handleFilterChange}
+            >
+              <option value="">All Categories</option>
+              {Array.from(new Set(products.map((product) => product.category))).map(
+                (category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
 
     <table className="table table-bordered">
             <thead className="thead-light">
@@ -127,24 +152,24 @@ catch(error){
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.description}</td>
-                  <td>{product.category}</td>
-                  <td>
-                    <img
-                      src={`http://localhost:8089/products/image/${product.image}`}
-                      alt={product.name}
-                      width="100"
-                      height="100"
-                    />
-                  </td>
-                  <td>£{product.price}</td>
-                </tr>
-              ))}
-            </tbody>
+                      {filteredProducts.map((product) => (
+                        <tr key={product.id}>
+                          <td>{product.id}</td>
+                          <td>{product.name}</td>
+                          <td>{product.description}</td>
+                          <td>{product.category}</td>
+                          <td>
+                            <img
+                              src={`http://localhost:8089/products/image/${product.image}`}
+                              alt={product.name}
+                              width="100"
+                              height="100"
+                            />
+                          </td>
+                          <td>${product.price}</td> {/* Changed currency symbol to $ */}
+                        </tr>
+                      ))}
+                    </tbody>
           </table>
     </div>
 
