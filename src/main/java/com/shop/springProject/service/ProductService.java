@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProductService {
-    private static final String FOLDER_PATH = "/";
+    private static final String FOLDER_PATH = "/Users/jahangir.miah1/Downloads/springProject/C:/images";
     @Autowired
     private ProductRepository repo;
 
@@ -20,7 +20,7 @@ public class ProductService {
     }
 
     public String addProduct(String name, String description,String category, MultipartFile file, int price) throws IOException {
-        File directory = new File("/images");
+        File directory = new File(FOLDER_PATH);
         if (!directory.exists()) {
             directory.mkdirs();
         }
@@ -42,7 +42,7 @@ public class ProductService {
     }
 
     public byte[] getProductImage(String name) throws IOException {
-        File imageFile = new File("/images/" + name);
+        File imageFile = new File(FOLDER_PATH + name);
         if (!imageFile.exists()) {
             throw new IOException("image is not found in the location");
         } else {
