@@ -39,6 +39,7 @@ public class ProductService {
 
     public List<Product> getAllProducts() {
         return this.repo.findAll();
+
     }
 
     public byte[] getProductImage(String name) throws IOException {
